@@ -91,6 +91,11 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml
 
+#Kernel Modules
+PRODUCT_COPY_FILES += \
+    device/zte/blade/cifs.ko:system/lib/modules/2.6.32.9-perf/cifs.ko \
+    device/zte/blade/ramzswap.ko:system/lib/modules/2.6.32.9-perf/ramzswap.ko \
+
 PRODUCT_PROPERTY_OVERRIDES := \
     keyguard.no_require_sim=true \
     ro.com.android.dateformat=dd-MM-yyyy \
