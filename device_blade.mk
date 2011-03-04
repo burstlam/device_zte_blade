@@ -92,8 +92,8 @@ PRODUCT_COPY_FILES += \
 
 #Kernel Modules
 PRODUCT_COPY_FILES += \
-    device/zte/blade/cifs.ko:system/lib/modules/2.6.32.9-perf/cifs.ko \
-    device/zte/blade/ramzswap.ko:system/lib/modules/2.6.32.9-perf/ramzswap.ko \
+    device/zte/blade/prebuilt/cifs.ko:system/lib/modules/2.6.32.9-perf/cifs.ko \
+    device/zte/blade/prebuilt/zram.ko:system/lib/modules/2.6.32.9-perf/zram.ko \
 
 PRODUCT_PROPERTY_OVERRIDES := \
     keyguard.no_require_sim=true \
@@ -141,5 +141,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapsize=32m \
     dalvik.vm.execution-mode=int:jit \
     dalvik.vm.dexopt-data-only=1 \
-    ro.opengles.version=131072  
+    ro.opengles.version=131072  \
+    ro.compcache.default=0
 
