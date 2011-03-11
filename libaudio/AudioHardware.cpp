@@ -394,8 +394,10 @@ status_t AudioHardware::setParameters(const String8& keyValuePairs)
         } else {
             mTtyMode = TTY_OFF;
         }
-        doRouting(NULL);
+    } else {
+	mTtyMode = TTY_OFF;
     }
+    doRouting(NULL);
 
     return NO_ERROR;
 }
@@ -1492,6 +1494,7 @@ status_t AudioHardware::AudioStreamOutMSM72xx::setParameters(const String8& keyV
     if (param.getInt(key, device) == NO_ERROR) {
         mDevices = device;
         LOGV("set output routing %x", mDevices);
+	status = mHardware->setParameters(keyValuePairs);
         status = mHardware->doRouting(NULL);
         param.remove(key);
     }
