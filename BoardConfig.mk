@@ -81,6 +81,11 @@ BOARD_KERNEL_BASE := 0x02a00000
 TARGET_PROVIDES_LIBRIL := true
 TARGET_PROVIDES_LIBAUDIO := true
 
+BOARD_USE_USB_MASS_STORAGE_SWITCH := true
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun
+
+BOARD_UMS_LUNFILE := "/sys/devices/platform/msm_hsusb/gadget/lun0/file"
+
 # # cat /proc/mtd
 # dev:    size   erasesize  name
 # mtd0: 00480000 00020000 "recovery"

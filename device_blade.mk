@@ -58,9 +58,8 @@ DISABLE_DEXPREOPT := false
 PRODUCT_COPY_FILES += \
     device/zte/blade/qwerty.kl:system/usr/keylayout/qwerty.kl
 
-# prebuilt vold
+# fstab
 PRODUCT_COPY_FILES += \
-    device/zte/blade/vold:system/bin/vold \
     device/zte/blade/vold.fstab:system/etc/vold.fstab
 
 # Init
