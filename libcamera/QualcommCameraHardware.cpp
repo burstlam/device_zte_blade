@@ -75,7 +75,7 @@ extern "C" {
 #define DEFAULT_PICTURE_WIDTH  1024
 #define DEFAULT_PICTURE_HEIGHT 768
 #define THUMBNAIL_BUFFER_SIZE (THUMBNAIL_WIDTH * THUMBNAIL_HEIGHT * 3/2)
-#define MAX_ZOOM_LEVEL 5
+#define MAX_ZOOM_LEVEL 20
 #define NOT_FOUND -1
 // Number of video buffers held by kernal (initially 1,2 &3)
 #define ACTIVE_VIDEO_BUFFERS 3
@@ -207,7 +207,7 @@ board_property boardProperties[] = {
  */
 //sorted on column basis
 static const camera_size_type picture_sizes[] = {
-    { 2592, 1944 }, // 5MP
+//    { 2592, 1944 }, // 5MP
     { 2560, 1920 }, // 5MP (slightly reduced)
     { 2048, 1536 }, // 3MP QXGA
     //{ 1920, 1080 }, //HD1080
@@ -313,10 +313,10 @@ static const str_map effects[] = {
     { CameraParameters::EFFECT_NEGATIVE,   CAMERA_EFFECT_NEGATIVE },
     { CameraParameters::EFFECT_SOLARIZE,   CAMERA_EFFECT_SOLARIZE },
     { CameraParameters::EFFECT_SEPIA,      CAMERA_EFFECT_SEPIA },
-    { CameraParameters::EFFECT_POSTERIZE,  CAMERA_EFFECT_POSTERIZE },
+//    { CameraParameters::EFFECT_POSTERIZE,  CAMERA_EFFECT_POSTERIZE },
     { CameraParameters::EFFECT_WHITEBOARD, CAMERA_EFFECT_WHITEBOARD },
     { CameraParameters::EFFECT_BLACKBOARD, CAMERA_EFFECT_BLACKBOARD },
-    { CameraParameters::EFFECT_AQUA,       CAMERA_EFFECT_AQUA }
+//    { CameraParameters::EFFECT_AQUA,       CAMERA_EFFECT_AQUA }
 };
 
 // from qcamera/common/camera.h
@@ -614,10 +614,10 @@ struct SensorType {
 
 static SensorType sensorTypes[] = {
         { "5mp", 2608, 1960, true,  2592, 1944,0x00000fff },
-        { "5mp", 5184, 1944, false,  2592, 1944,0x00000fff },
-        { "5mp", 5120, 1920, true,  2560, 1920,0x00000fff },
+        { "5mp", 5184, 1944, true,  2592, 1944,0x00000fff }, // actual 5MP blade
+        { "5mp", 2560, 1920, true,  2560, 1920,0x00000fff }, //should be 5MP blade
         { "3mp", 2064, 1544, false, 2048, 1536,0x000007ff },
-        { "3mp", 4096, 1536, true, 2048, 1536,0x000007ff },
+        { "3mp", 4096, 1536, true, 2048, 1536,0x000007ff }, // 3MP blade
         { "2mp", 3200, 1200, false, 1600, 1200,0x000007ff } };
 
 
@@ -1111,7 +1111,7 @@ void QualcommCameraHardware::initDefaultParameters()
 
     mParameters.set("luma-adaptation", "3");
     mParameters.set("zoom-supported", "true");
-    mParameters.set("zoom-ratios", "100,200,300,400,500,600");
+    mParameters.set("zoom-ratios", "100,105,110,115,120,125,130,135,140,145,150,155,160,165,170,175,180,185,190,195,200");
     mParameters.set("max-zoom", MAX_ZOOM_LEVEL);
     mParameters.set("zoom", 0);
     mParameters.set(CameraParameters::KEY_PICTURE_FORMAT,
