@@ -28,13 +28,6 @@ chmod 755 ../../../vendor/zte/$DEVICE/proprietary/hci_qcomm_init
 
 adb pull /system/etc/init.qcom.bt.sh ../../../vendor/zte/$DEVICE/proprietary/init.qcom.bt.sh
 
-#Wifi
-adb pull /system/wifi/ar6000.ko ../../../vendor/zte/$DEVICE/proprietary/ar6000.ko
-adb pull /system/wifi/regcode ../../../vendor/zte/$DEVICE/proprietary/regcode
-adb pull /system/wifi/data.patch.hw2_0.bin ../../../vendor/zte/$DEVICE/proprietary/data.patch.hw2_0.bin
-adb pull /system/wifi/athwlan.bin.z77 ../../../vendor/zte/$DEVICE/proprietary/athwlan.bin.z77
-adb pull /system/wifi/athtcmd_ram.bin ../../../vendor/zte/$DEVICE/proprietary/athtcmd_ram.bin
-
 # EGL
 adb pull /system/lib/egl/libEGL_adreno200.so ../../../vendor/zte/$DEVICE/proprietary/libEGL_adreno200.so
 adb pull /system/lib/egl/libGLESv2_adreno200.so ../../../vendor/zte/$DEVICE/proprietary/libGLESv2_adreno200.so
@@ -122,11 +115,6 @@ adb pull /system/lib/libomx_sharedlibrary.so ../../../vendor/zte/$DEVICE/proprie
 
 # All the blobs necessary for blade
 PRODUCT_COPY_FILES += \\
-    vendor/zte/__DEVICE__/proprietary/ar6000.ko:system/wifi/ar6000.ko \\
-    vendor/zte/__DEVICE__/proprietary/regcode:system/wifi/regcode \\
-    vendor/zte/__DEVICE__/proprietary/data.patch.hw2_0.bin:system/wifi/data.patch.hw2_0.bin \\
-    vendor/zte/__DEVICE__/proprietary/athwlan.bin.z77:system/wifi/athwlan.bin.z77 \\
-    vendor/zte/__DEVICE__/proprietary/athtcmd_ram.bin:system/wifi/athtcmd_ram.bin \\
     vendor/zte/__DEVICE__/proprietary/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \\
     vendor/zte/__DEVICE__/proprietary/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \\
     vendor/zte/__DEVICE__/proprietary/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \\

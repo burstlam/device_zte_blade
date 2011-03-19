@@ -26,13 +26,6 @@ chmod 755 ../../../vendor/zte/$DEVICE/proprietary/hci_qcomm_init
 
 unzip -j -o ../../../${DEVICE}_update.zip system/etc/init.qcom.bt.sh -d ../../../vendor/zte/$DEVICE/proprietary/
 
-#Wifi
-unzip -j -o ../../../${DEVICE}_update.zip system/wifi/ar6000.ko -d ../../../vendor/zte/$DEVICE/proprietary/
-unzip -j -o ../../../${DEVICE}_update.zip system/wifi/regcode -d ../../../vendor/zte/$DEVICE/proprietary/
-unzip -j -o ../../../${DEVICE}_update.zip system/wifi/data.patch.hw2_0.bin -d ../../../vendor/zte/$DEVICE/proprietary/
-unzip -j -o ../../../${DEVICE}_update.zip system/wifi/athwlan.bin.z77 -d ../../../vendor/zte/$DEVICE/proprietary/
-unzip -j -o ../../../${DEVICE}_update.zip system/wifi/athtcmd_ram.bin -d ../../../vendor/zte/$DEVICE/proprietary/
-
 # EGL
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/egl/libEGL_adreno200.so -d ../../../vendor/zte/$DEVICE/proprietary/
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/egl/libGLESv2_adreno200.so -d ../../../vendor/zte/$DEVICE/proprietary/
@@ -120,11 +113,6 @@ unzip -j -o ../../../${DEVICE}_update.zip system/lib/libomx_sharedlibrary.so -d 
 
 # All the blobs necessary for blade
 PRODUCT_COPY_FILES += \\
-    vendor/zte/__DEVICE__/proprietary/ar6000.ko:system/wifi/ar6000.ko \\
-    vendor/zte/__DEVICE__/proprietary/regcode:system/wifi/regcode \\
-    vendor/zte/__DEVICE__/proprietary/data.patch.hw2_0.bin:system/wifi/data.patch.hw2_0.bin \\
-    vendor/zte/__DEVICE__/proprietary/athwlan.bin.z77:system/wifi/athwlan.bin.z77 \\
-    vendor/zte/__DEVICE__/proprietary/athtcmd_ram.bin:system/wifi/athtcmd_ram.bin \\
     vendor/zte/__DEVICE__/proprietary/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \\
     vendor/zte/__DEVICE__/proprietary/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \\
     vendor/zte/__DEVICE__/proprietary/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \\

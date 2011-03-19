@@ -91,8 +91,16 @@ PRODUCT_COPY_FILES += \
 
 #Kernel Modules
 PRODUCT_COPY_FILES += \
+    device/zte/blade/prebuilt/ar6000.ko:system/wifi/ar6000.ko \
     device/zte/blade/prebuilt/cifs.ko:system/lib/modules/2.6.32.9-perf/cifs.ko \
     device/zte/blade/prebuilt/zram.ko:system/lib/modules/2.6.32.9-perf/zram.ko \
+
+#WiFi firmware
+PRODUCT_COPY_FILES += \
+    device/zte/blade/firmware/regcode:system/wifi/regcode \
+    device/zte/blade/firmware/data.patch.hw2_0.bin:system/wifi/data.patch.hw2_0.bin \
+    device/zte/blade/firmware/athwlan.bin.z77:system/wifi/athwlan.bin.z77 \
+    device/zte/blade/firmware/athtcmd_ram.bin:system/wifi/athtcmd_ram.bin
 
 PRODUCT_PROPERTY_OVERRIDES := \
     keyguard.no_require_sim=true \
