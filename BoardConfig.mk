@@ -51,8 +51,8 @@ BOARD_HAVE_BLUETOOTH := true
 
 # Wifi related defines
 BOARD_WPA_SUPPLICANT_DRIVER := AWEXT
-WIFI_DRIVER_MODULE_PATH     := "/system/wifi/ar6000.ko"
-WIFI_DRIVER_MODULE_NAME     := "ar6000"
+WIFI_DRIVER_MODULE_PATH     := /system/wifi/ar6000.ko
+WIFI_DRIVER_MODULE_NAME     := ar6000
 
 WITH_JIT := true
 ENABLE_JSC_JIT := true
