@@ -55,8 +55,7 @@ unzip -j -o ../../../${DEVICE}_update.zip system/lib/libpbmlib.so -d ../../../ve
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libdss.so -d ../../../vendor/zte/$DEVICE/proprietary/
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libauth.so -d ../../../vendor/zte/$DEVICE/proprietary/
 
-#sensors + lights
-unzip -j -o ../../../${DEVICE}_update.zip system/lib/hw/sensors.default.so -d ../../../vendor/zte/$DEVICE/proprietary/
+#lights
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/hw/lights.msm7k.so -d ../../../vendor/zte/$DEVICE/proprietary/
 
 #camera
@@ -141,7 +140,6 @@ PRODUCT_COPY_FILES += \\
     vendor/zte/__DEVICE__/proprietary/libpbmlib.so:system/lib/libpbmlib.so \\
     vendor/zte/__DEVICE__/proprietary/libdss.so:system/lib/libdss.so \\
     vendor/zte/__DEVICE__/proprietary/libauth.so:system/lib/libauth.so \\
-    vendor/zte/__DEVICE__/proprietary/sensors.default.so:system/lib/hw/sensors.default.so \\
     vendor/zte/__DEVICE__/proprietary/lights.msm7k.so:system/lib/hw/lights.msm7k.so \\
     vendor/zte/__DEVICE__/proprietary/liboemcamera.so:system/lib/liboemcamera.so \\
     vendor/zte/__DEVICE__/proprietary/liboemcamera.so:obj/lib/liboemcamera.so \\
