@@ -46,6 +46,7 @@ PRODUCT_PACKAGES += \
     gralloc.blade \
     copybit.blade \
     gps.blade \
+    sensors.blade \
     libOmxCore \
     libOmxVidEnc \
     dexpreopt
