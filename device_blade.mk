@@ -49,6 +49,7 @@ PRODUCT_PACKAGES += \
     sensors.blade \
     libOmxCore \
     libOmxVidEnc \
+    FM \
     dexpreopt
 
 # proprietary side of the device
