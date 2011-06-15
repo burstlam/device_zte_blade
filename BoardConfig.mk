@@ -81,6 +81,7 @@ BOARD_KERNEL_BASE := 0x02600000
 TARGET_PROVIDES_LIBRIL := true
 TARGET_PROVIDES_LIBAUDIO := true
 
+BOARD_CUSTOM_USB_CONTROLLER := ../../device/zte/blade/UsbController.cpp
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun
 
