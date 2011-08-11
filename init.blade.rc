@@ -79,6 +79,13 @@ on boot
 
 service qmuxd /system/bin/qmuxd 
 
+on property:init.svc.bluetoothd=running
+    write /sys/devices/virtual/bluetooth/hci0/idle_timeout 7000
+    start abtfilt
+
+on property:init.svc.bluetoothd=stopped
+    stop abtfilt
+
 service hci_qcomm_init /system/bin/log -t qcom-bluetooth -p i "hci_qcomm_init service requested"
     user bluetooth
     group bluetooth net_bt_admin
@@ -109,9 +116,9 @@ service dhcpcd_wlan0 /system/bin/dhcpcd -BKL
 #        disabled
 #        oneshot
 
-#service abtfilt /system/bin/abtfilt -c -d -z -n
-#    disabled
-#    oneshot
+service abtfilt /system/bin/abtfilt -c -d -z -n
+    disabled
+    oneshot
 
 service akmd /system/bin/akmd2
     oneshot
