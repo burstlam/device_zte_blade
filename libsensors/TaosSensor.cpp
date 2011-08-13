@@ -21,6 +21,8 @@
 #include <unistd.h>
 #include <dirent.h>
 #include <sys/select.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #include "taos_common.h"
 
@@ -34,7 +36,8 @@ TaosSensor::TaosSensor()
     : SensorBase(TAOS_DEVICE_NAME, "alsprox"),
       mEnabled(0),
       mInputReader(4),
-      mPendingMask(0)
+      mPendingMask(0),
+      mInitialised(0)
 {
 
     memset(mPendingEvents, 0, sizeof(mPendingEvents));
@@ -48,6 +51,9 @@ TaosSensor::TaosSensor()
     mPendingEvents[Light].type = SENSOR_TYPE_LIGHT;
 
     open_device();
+
+    if(!mInitialised) mInitialised = initialise();
+
     if ( (!ioctl(dev_fd, TAOS_IOCTL_ALS_ON)) && (!ioctl(dev_fd, TAOS_IOCTL_PROX_ON))) {
         mEnabled = 1;
         setInitialState();
@@ -63,6 +69,49 @@ TaosSensor::~TaosSensor() {
         enable(Proximity, 0);
         enable(Light, 0);
     }
+}
+
+int TaosSensor::initialise() {
+  struct taos_cfg cfg;
+  FILE * cFile;
+  int array[20];
+  int i=0;
+  int rv;
+  char cNum[10] ;
+  char cfg_data[100];
+
+  rv = ioctl(dev_fd, TAOS_IOCTL_CONFIG_GET, &cfg);
+  if(rv) LOGE("Failed to read Taos defaults from kernel!!!");
+
+  cFile = fopen(PROX_FILE,"r");
+  if (cFile != NULL){
+    fgets(cfg_data, 100, cFile);
+    fclose(cFile);
+    if(sscanf(cfg_data,"%hu,%hu,%hhu,%hhu,%hhu,%hhu,%hhu,%hhu,%hhu\n",
+	      &cfg.prox_threshold_hi,
+	      &cfg.prox_threshold_lo,
+	      &cfg.prox_int_time,
+	      &cfg.prox_adc_time,
+	      &cfg.prox_wait_time,
+	      &cfg.prox_intr_filter,
+	      &cfg.prox_config,
+	      &cfg.prox_pulse_cnt,
+	      &cfg.prox_gain
+	      ) == 9){
+
+      rv = ioctl(dev_fd, TAOS_IOCTL_CONFIG_SET, &cfg);
+      if(rv) LOGE("Set proximity data failed!!!");
+      else LOGD("Proximity calibration data successfully loaded from %s",PROX_FILE);
+
+    } else {
+      LOGD("Prximity calibration data is not valid. Using defaults.");
+    }
+
+  } else {
+    LOGD("No proximity calibration data found. Using defaults.");
+  }
+
+  return 1;
 }
 
 int TaosSensor::setInitialState() {

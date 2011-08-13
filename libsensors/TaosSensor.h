@@ -28,6 +28,8 @@
 
 /*****************************************************************************/
 
+#define PROX_FILE      "/data/misc/prox_data.txt"
+
 struct input_event;
 
 class TaosSensor : public SensorBase {
@@ -38,7 +40,10 @@ class TaosSensor : public SensorBase {
   
   float mPreviousLight;
   float mPreviousDistance;
+
+  int mInitialised;
   
+  int initialise();
   int setInitialState();
   float indexToValue(size_t index) const;
 

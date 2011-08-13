@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="com.cyanogenmod.BladeParts" android:sharedUserId="android.uid.system">
+	<uses-permission android:name="android.permission.SET_ALWAYS_FINISH" />
+	<application android:icon="@drawable/icon" android:label="@string/app_name">
+		<activity android:name=".BladeParts" android:label="@string/app_name">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<activity android:name="com.cyanogenmod.BladeParts.ProxCalibration"
+			android:label="@string/prox_calibration_title_head"
+			android:launchMode="singleInstance" android:theme="@android:style/Theme.NoDisplay">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+			</intent-filter>
+		</activity>
+		<activity android:name="com.cyanogenmod.BladeParts.ProxDisplay"
+			android:label="@string/prox_display_title_head" android:launchMode="standard">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+			</intent-filter>
+		</activity>
+	</application>
+</manifest>
