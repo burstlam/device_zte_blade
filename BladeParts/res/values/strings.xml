@@ -7,4 +7,6 @@
         <string name="prox_display_summary_head">Show current proximity sensor calibration data</string>
         <string  name="toast_error">Error:</string>
         <string  name="back_button">Back</string>
+        <string name="usb_charging_title_head">USB Charging</string>
+        <string name="usb_charging_summary_head">Enable/Disable charging</string>
 </resources>
