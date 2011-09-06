@@ -25,6 +25,8 @@
 #define TAOS_IOCTL_PROX_DATA		_IOR(TAOS_IOCTL_MAGIC, 9, struct taos_prox_info)
 #define TAOS_IOCTL_PROX_EVENT           _IO(TAOS_IOCTL_MAGIC, 10)
 #define TAOS_IOCTL_PROX_CALIBRATE	_IO(TAOS_IOCTL_MAGIC, 11)
+#define TAOS_IOCTL_PROX_GET_ENABLED   	_IOR(TAOS_IOCTL_MAGIC, 12, int*)
+#define TAOS_IOCTL_ALS_GET_ENABLED   	_IOR(TAOS_IOCTL_MAGIC, 13, int*)
 //
 #define u32 unsigned int 
 #define u16 unsigned short  

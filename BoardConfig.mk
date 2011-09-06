@@ -26,13 +26,11 @@ USE_CAMERA_STUB := false
 
 BOARD_HAS_FLIPPED_SCREEN := true
 
-BOARD_NO_RGBX_8888 := true
-
 TARGET_NO_BOOTLOADER := true
 
 TARGET_PREBUILT_RECOVERY_KERNEL := device/zte/blade/recovery_kernel
 
-BOARD_KERNEL_CMDLINE := androidboot.hardware=blade console=null g_android.product_id=0x1354 g_android.serial_number=Blade-CM7
+BOARD_KERNEL_CMDLINE := androidboot.hardware=blade console=null
 
 TARGET_BOARD_PLATFORM := msm7k
 TARGET_ARCH_VARIANT := armv6-vfp
@@ -58,6 +56,7 @@ WITH_JIT := true
 ENABLE_JSC_JIT := true
 
 TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
+TARGET_USES_16BPPSURFACE_FOR_OPAQUE := true
 
 JS_ENGINE := v8
 
@@ -71,9 +70,13 @@ BOARD_GPS_LIBRARIES := libloc_api
 
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QCOM_LIBS := true
-BOARD_USES_QCOM_GPS := true
-BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := blade
-BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 1240
+#BOARD_USES_QCOM_GPS := true
+#BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := blade
+#BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 1240
+BOARD_GPS_LIBRARIES := libloc
+BOARD_USES_GPSSHIM := true
+BOARD_GPS_NEEDS_XTRA := true
+
 
 BOARD_KERNEL_BASE := 0x02600000
 #BOARD_PAGE_SIZE := 0x00000800
@@ -82,8 +85,6 @@ TARGET_PROVIDES_LIBRIL := true
 TARGET_PROVIDES_LIBAUDIO := true
 
 BOARD_CUSTOM_USB_CONTROLLER := ../../device/zte/blade/UsbController.cpp
-BOARD_USE_USB_MASS_STORAGE_SWITCH := true
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun
 
 BOARD_UMS_LUNFILE := "/sys/devices/platform/msm_hsusb/gadget/lun0/file"
 
@@ -106,3 +107,4 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x0d020000
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 BOARD_CUSTOM_RECOVERY_KEYMAPPING:= ../../device/zte/blade/recovery/recovery_ui.c
+TARGET_RECOVERY_INITRC := device/zte/blade/recovery/recovery.rc

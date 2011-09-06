@@ -90,8 +90,10 @@ unzip -j -o ../../../${DEVICE}_update.zip system/lib/libomx_m4vdec_sharedlibrary
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libomx_mp3dec_sharedlibrary.so -d ../../../vendor/zte/$DEVICE/proprietary/
 unzip -j -o ../../../${DEVICE}_update.zip system/lib/libomx_sharedlibrary.so -d ../../../vendor/zte/$DEVICE/proprietary/
 
-
-
+#GPS
+unzip -j -o ../../../${DEVICE}_update.zip system/lib/libloc.so -d ../../../vendor/zte/$DEVICE/proprietary/
+unzip -j -o ../../../${DEVICE}_update.zip system/lib/libloc-rpc.so -d ../../../vendor/zte/$DEVICE/proprietary/
+unzip -j -o ../../../${DEVICE}_update.zip system/lib/libcommondefs.so -d ../../../vendor/zte/$DEVICE/proprietary/
 
 (cat << EOF) | sed s/__DEVICE__/$DEVICE/g > ../../../vendor/zte/$DEVICE/$DEVICE-vendor-blobs.mk
 # Copyright (C) 2010 The Android Open Source Project
@@ -170,8 +172,11 @@ PRODUCT_COPY_FILES += \\
     vendor/zte/__DEVICE__/proprietary/libomx_avcdec_sharedlibrary.so:system/lib/libomx_avcdec_sharedlibrary.so \\
     vendor/zte/__DEVICE__/proprietary/libomx_m4vdec_sharedlibrary.so:system/lib/libomx_m4vdec_sharedlibrary.so \\
     vendor/zte/__DEVICE__/proprietary/libomx_mp3dec_sharedlibrary.so:system/lib/libomx_mp3dec_sharedlibrary.so \\
-    vendor/zte/__DEVICE__/proprietary/libomx_sharedlibrary.so:system/lib/libomx_sharedlibrary.so
-
+    vendor/zte/__DEVICE__/proprietary/libomx_sharedlibrary.so:system/lib/libomx_sharedlibrary.so \\
+    vendor/zte/__DEVICE__/proprietary/libloc.so:system/lib/libloc.so \\
+    vendor/zte/__DEVICE__/proprietary/libloc.so:obj/lib/libloc.so \\
+    vendor/zte/__DEVICE__/proprietary/libloc-rpc.so:system/lib/libloc-rpc.so \\
+    vendor/zte/__DEVICE__/proprietary/libcommondefs.so:system/lib/libcommondefs.so
 
 EOF
 

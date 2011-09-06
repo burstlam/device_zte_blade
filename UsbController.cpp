@@ -50,7 +50,7 @@ int UsbController::stopRNDIS() {
 int UsbController::enableRNDIS(bool enable) {
 	    char value[20];
 	    int fd = open("/sys/module/g_android/parameters/product_id", O_RDWR);
-	    int count = snprintf(value, sizeof(value), "%s\n", (enable ? "1364" : "1354"));
+	    int count = snprintf(value, sizeof(value), "%s\n", (enable ? "1364" : "1351"));
 	    write(fd, value, count);
 	    close(fd);
 	    return 0;
@@ -63,7 +63,7 @@ int UsbController::enableRNDIS(bool enable) {
     int fd = open("/sys/module/g_android/parameters/product_id", O_RDWR);
 
     // * Switch to RNDIS composition (Product id = 1364) When RNDIS is enabled.
-    // * Switch back to default composition (Product id = 1354 for ADB and 1353 for UMS) after RNDIS
+    // * Switch back to default composition (Product id = 1351 for ADB and 1353 for UMS) after RNDIS
     // * is disabled.
     // *
     char disabled_value[6];

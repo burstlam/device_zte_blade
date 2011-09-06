@@ -9,8 +9,8 @@ on property:dev.bootcomplete=1
 on boot
 
 # cpufreq configurations
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 245760
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
+#    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 245760
+#    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
     write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 500000
     write /sys/devices/system/cpu/cpufreq/ondemand/up_threshold 90
     write /sys/devices/system/cpu/cpufreq/ondemand/down_threshold 30
@@ -30,6 +30,9 @@ on boot
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
+# Setup android gadget
+   write /sys/module/g_android/parameters/serial_number CM7-Blade
+   write /sys/module/g_android/parameters/product_id 0x1351
 
 #create  WIFI filesystem structure
     mkdir /data/misc 01771 system misc
