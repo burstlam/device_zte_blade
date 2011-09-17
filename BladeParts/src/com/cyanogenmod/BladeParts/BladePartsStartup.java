@@ -1,26 +1,17 @@
 package com.cyanogenmod.BladeParts;
 
-import com.cyanogenmod.BladeParts.R;
-
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class BladeParts extends PreferenceActivity {
-
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-
-		addPreferencesFromResource(R.xml.bladeparts);
-	}
-
+public class BladePartsStartup extends BroadcastReceiver
+{
    private void writeValue(String parameter, int value) {
       try {
           FileOutputStream fos = new FileOutputStream(new File(parameter));
@@ -36,9 +27,8 @@ public class BladeParts extends PreferenceActivity {
    }
 
    @Override
-   public void onPause() {
-      super.onPause();
-      SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+   public void onReceive(final Context context, final Intent bootintent) {
+      SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
       // USB charging
       if(prefs.getBoolean("usb_charging", true))
          writeValue("/sys/module/msm_battery/parameters/usb_chg_enable", 1);

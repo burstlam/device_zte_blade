@@ -18,5 +18,11 @@
 			android:targetPackage="com.cyanogenmod.BladeParts"
 			android:targetClass="com.cyanogenmod.BladeParts.ProxCalibration" />
 	</PreferenceScreen>
+	<!-- USB Charging -->
+	<CheckBoxPreference
+		android:key="usb_charging"
+		android:title="@string/usb_charging_title_head"
+		android:summary="@string/usb_charging_summary_head"
+		android:defaultValue="true" />
 
 </PreferenceScreen>
