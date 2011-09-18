@@ -12,6 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifeq ($(TARGET_DEVICE),blade)
+ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),blade)
     include $(call all-named-subdir-makefiles, recovery libaudio libril libcamera libgralloc libcopybit libsensors BladeParts)
 endif
