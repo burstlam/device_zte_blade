@@ -93,7 +93,10 @@ adb pull /system/lib/libomx_m4vdec_sharedlibrary.so ../../../vendor/zte/$DEVICE/
 adb pull /system/lib/libomx_mp3dec_sharedlibrary.so ../../../vendor/zte/$DEVICE/proprietary/libomx_mp3dec_sharedlibrary.so
 adb pull /system/lib/libomx_sharedlibrary.so ../../../vendor/zte/$DEVICE/proprietary/libomx_sharedlibrary.so
 
-
+#GPS
+adb pull /system/lib/libloc.so ../../../vendor/zte/$DEVICE/proprietary/libloc.so
+adb pull /system/lib/libloc-rpc.so ../../../vendor/zte/$DEVICE/proprietary/libloc-rpc.so
+adb pull /system/lib/libcommondefs.so ../../../vendor/zte/$DEVICE/proprietary/libcommondefs.so
 
 (cat << EOF) | sed s/__DEVICE__/$DEVICE/g > ../../../vendor/zte/$DEVICE/$DEVICE-vendor-blobs.mk
 # Copyright (C) 2010 The Android Open Source Project
@@ -172,9 +175,11 @@ PRODUCT_COPY_FILES += \\
     vendor/zte/__DEVICE__/proprietary/libomx_avcdec_sharedlibrary.so:system/lib/libomx_avcdec_sharedlibrary.so \\
     vendor/zte/__DEVICE__/proprietary/libomx_m4vdec_sharedlibrary.so:system/lib/libomx_m4vdec_sharedlibrary.so \\
     vendor/zte/__DEVICE__/proprietary/libomx_mp3dec_sharedlibrary.so:system/lib/libomx_mp3dec_sharedlibrary.so \\
-    vendor/zte/__DEVICE__/proprietary/libomx_sharedlibrary.so:system/lib/libomx_sharedlibrary.so
-
-
+    vendor/zte/__DEVICE__/proprietary/libomx_sharedlibrary.so:system/lib/libomx_sharedlibrary.so \\
+    vendor/zte/__DEVICE__/proprietary/libloc.so:system/lib/libloc.so \\
+    vendor/zte/__DEVICE__/proprietary/libloc.so:obj/lib/libloc.so \\
+    vendor/zte/__DEVICE__/proprietary/libloc-rpc.so:system/lib/libloc-rpc.so \\
+    vendor/zte/__DEVICE__/proprietary/libcommondefs.so:system/lib/libcommondefs.so
 
 EOF
 

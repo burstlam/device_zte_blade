@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef ANDROID_TAOS_SENSOR_H
-#define ANDROID_TAOS_SENSOR_H
+#ifndef ANDROID_TAOS_LIGHT_H
+#define ANDROID_TAOS_LIGHT_H
 
 #include <stdint.h>
 #include <errno.h>
@@ -28,37 +28,24 @@
 
 /*****************************************************************************/
 
-#define PROX_FILE      "/data/misc/prox_data.txt"
-
 struct input_event;
 
-class TaosSensor : public SensorBase {
+class TaosLight : public SensorBase {
   const static uint DEBUG = 0;
   uint mEnabled;
   InputEventCircularReader mInputReader;
   uint32_t mPendingMask;
-  
-  float mPreviousLight;
-  float mPreviousDistance;
-
-  int mInitialised;
-  
-  int initialise();
   int setInitialState();
-  float indexToValue(size_t index) const;
 
 public:
-  TaosSensor();
-  virtual ~TaosSensor();
+  TaosLight();
+  virtual ~TaosLight();
   virtual int readEvents(sensors_event_t* data, int count);
   virtual bool hasPendingEvents() const;
   virtual int enable(int32_t handle, int enabled);
-  const static uint     Proximity   = 0;
-  const static uint        Light       = 1;
-  const static uint        numSensors = 2;
-  sensors_event_t mPendingEvents[numSensors];
+  sensors_event_t mPendingEvents;
 };
 
 /*****************************************************************************/
 
-#endif  // ANDROID_TAOS_SENSOR_H
+#endif  // ANDROID_TAOS_LIGHT_H

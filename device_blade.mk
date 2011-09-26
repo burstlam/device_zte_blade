@@ -99,8 +99,10 @@ PRODUCT_COPY_FILES += \
 #Kernel Modules
 PRODUCT_COPY_FILES += \
     device/zte/blade/prebuilt/ar6000.ko:system/wifi/ar6000.ko \
-    device/zte/blade/prebuilt/cifs.ko:system/lib/modules/2.6.32.9-perf/cifs.ko \
-    device/zte/blade/prebuilt/zram.ko:system/lib/modules/2.6.32.9-perf/zram.ko \
+    device/zte/blade/prebuilt/cifs.ko:system/lib/modules/2.6.35.7-perf+/cifs.ko \
+    device/zte/blade/prebuilt/zram.ko:system/lib/modules/2.6.35.7-perf+/zram.ko \
+    device/zte/blade/prebuilt/lzo_compress.ko:system/lib/modules/2.6.35.7-perf+/lzo_compress.ko \
+    device/zte/blade/prebuilt/lzo_decompress.ko:system/lib/modules/2.6.35.7-perf+/lzo_decompress.ko
 
 #WiFi firmware
 PRODUCT_COPY_FILES += \

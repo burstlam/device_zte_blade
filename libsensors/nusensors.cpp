@@ -29,7 +29,8 @@
 #include <cutils/log.h>
 
 #include "nusensors.h"
-#include "TaosSensor.h"
+#include "TaosProximity.h"
+#include "TaosLight.h"
 #include "AkmSensor.h"
 /*****************************************************************************/
 
@@ -44,8 +45,9 @@ struct sensors_poll_context_t {
 
 private:
     enum {
-        taos            = 0,
-        akm             = 1,
+        prox            = 0,
+	light           = 1,
+        akm             = 2,
         numSensorDrivers,
         numFds,
     };
@@ -63,9 +65,10 @@ private:
             case ID_O:
                 return akm;
             case ID_P:
+                return prox;
             case ID_L:
-                return taos;
-	      break;
+	        return light;
+	        break;
         }
         return -EINVAL;
     }
@@ -75,10 +78,15 @@ private:
 
 sensors_poll_context_t::sensors_poll_context_t()
 {
-    mSensors[taos] = new TaosSensor();
-    mPollFds[taos].fd = mSensors[taos]->getFd();
-    mPollFds[taos].events = POLLIN;
-    mPollFds[taos].revents = 0;
+    mSensors[prox] = new TaosProximity();
+    mPollFds[prox].fd = mSensors[prox]->getFd();
+    mPollFds[prox].events = POLLIN;
+    mPollFds[prox].revents = 0;
+
+    mSensors[light] = new TaosLight();
+    mPollFds[light].fd = mSensors[light]->getFd();
+    mPollFds[light].events = POLLIN;
+    mPollFds[light].revents = 0;
 
     mSensors[akm] = new AkmSensor();
     mPollFds[akm].fd = mSensors[akm]->getFd();
