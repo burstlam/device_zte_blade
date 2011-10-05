@@ -18,6 +18,16 @@
 			android:targetPackage="com.cyanogenmod.BladeParts"
 			android:targetClass="com.cyanogenmod.BladeParts.ProxCalibration" />
 	</PreferenceScreen>
+
+	<!-- Proximity sensor restore defaults -->
+	<PreferenceScreen android:key="prox_restore"
+		android:title="@string/prox_restore_title_head" android:summary="@string/prox_restore_summary_head">
+
+		<intent android:action="android.intent.action.MAIN"
+			android:targetPackage="com.cyanogenmod.BladeParts"
+			android:targetClass="com.cyanogenmod.BladeParts.ProxCalRestore" />
+	</PreferenceScreen>
+
 	<!-- USB Charging -->
 	<CheckBoxPreference
 		android:key="usb_charging"
