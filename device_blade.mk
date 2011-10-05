@@ -132,7 +132,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=240 \
-    ro.sf.hwrotation=180
+    ro.sf.hwrotation=180 \
+    persist.sys.use_16bpp_alpha=1
 
 # Blade uses high-density artwork where available
 PRODUCT_LOCALES += hdpi
