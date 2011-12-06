@@ -21,7 +21,7 @@
 #include <media/mediarecorder.h>
 #include <fcntl.h>
 
-namespace android {
+namespace android_audio_legacy {
 
 
 
@@ -131,7 +131,7 @@ uint32_t AudioPolicyManager::getDeviceForStrategy(routing_strategy strategy, boo
         // The second device used for sonification is the same as the device used by media strategy
         // FALL THROUGH
 
-    case STRATEGY_MEDIA_SONIFICATION:
+    case STRATEGY_ENFORCED_AUDIBLE:
         // If incall, just select the STRATEGY_PHONE device: The rest of the behavior is handled by
         // handleIncallSonification().
         if (mPhoneState == AudioSystem::MODE_IN_CALL) {
@@ -191,4 +191,4 @@ uint32_t AudioPolicyManager::getDeviceForStrategy(routing_strategy strategy, boo
     return device;
 }
 
-}; // namespace android
+}; // namespace android_audio_legacy

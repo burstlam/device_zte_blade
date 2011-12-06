@@ -1,7 +1,5 @@
 # Copyright 2006 The Android Open Source Project
 
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),blade)
-
 MODULE.TARGET.SHARED_LIBRARIES.libril :=
 
 LOCAL_PATH:= $(call my-dir)
@@ -26,5 +24,3 @@ LOCAL_MODULE:= libril
 LOCAL_LDLIBS += -lpthread
 
 include $(BUILD_SHARED_LIBRARY)
-
-endif # TARGET_BOOTLOADER_BOARD_NAME

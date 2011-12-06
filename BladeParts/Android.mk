@@ -3,10 +3,14 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE_TAGS := optional
 
+LOCAL_STATIC_JAVA_LIBRARIES := android-support-v13
+
 LOCAL_SRC_FILES := $(call all-java-files-under, src)
 
 LOCAL_PACKAGE_NAME := BladeParts
 LOCAL_CERTIFICATE := platform
+
+LOCAL_REQUIRED_MODULES := prox_cal
 
 include $(BUILD_PACKAGE)
 

@@ -30,7 +30,9 @@ extern "C" {
 #include "msm_audio_voicememo.h"
 }
 
-namespace android {
+using namespace android;
+
+namespace android_audio_legacy {
 
 // ----------------------------------------------------------------------------
 // Kernel driver interface
@@ -281,6 +283,10 @@ private:
                 uint32_t    devices() { return mDevices; }
                 int         state() const { return mState; }
 
+        // Stubs (ICS)
+        virtual status_t addAudioEffect(effect_handle_t effect) { return INVALID_OPERATION; }
+        virtual status_t removeAudioEffect(effect_handle_t effect) { return INVALID_OPERATION; }
+
     private:
                 AudioHardware* mHardware;
                 int         mFd;
@@ -301,7 +307,7 @@ private:
             bool        mBluetoothNrec;
             uint32_t    mBluetoothId;
             AudioStreamOutMSM72xx*  mOutput;
-            SortedVector <AudioStreamInMSM72xx*>   mInputs;
+            android::SortedVector <AudioStreamInMSM72xx*>   mInputs;
 
             msm_snd_endpoint *mSndEndpoints;
             int mNumSndEndpoints;
@@ -317,7 +323,7 @@ private:
             bool        mBuiltinMicSelected;
 
      friend class AudioStreamInMSM72xx;
-            Mutex       mLock;
+            android::Mutex       mLock;
 };
 
 // ----------------------------------------------------------------------------

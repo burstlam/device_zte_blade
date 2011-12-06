@@ -31,6 +31,8 @@ on boot
 
     class_start default
 
+    setprop service.adb.root 1
+
 service ueventd /sbin/ueventd
     critical
 
@@ -39,8 +41,9 @@ service recovery /sbin/recovery
 service adbd /sbin/adbd recovery
     disabled
 
-on property:persist.service.adb.enable=1
+on property:ro.debuggable=1
     start adbd
 
-on property:persist.service.adb.enable=0
-    stop adbd
+# Restart adbd so it can run as root
+on property:service.adb.root=1
+    restart adbd
