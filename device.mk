@@ -19,12 +19,6 @@
 #
 # Everything in this directory will become public
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-        LOCAL_KERNEL := device/zte/blade/kernel
-else
-        LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
 DEVICE_PACKAGE_OVERLAYS := device/zte/blade/overlay
 $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
@@ -57,7 +51,6 @@ PRODUCT_PACKAGES += \
 DISABLE_DEXPREOPT := false
 
 PRODUCT_COPY_FILES := \
-        $(LOCAL_KERNEL):kernel \
         device/zte/blade/init.blade.rc:root/init.blade.rc \
         device/zte/blade/init.blade.usb.rc:root/init.blade.usb.rc \
         device/zte/blade/ueventd.blade.rc:root/ueventd.blade.rc \
@@ -73,13 +66,6 @@ PRODUCT_COPY_FILES := \
 PRODUCT_COPY_FILES += \
         device/zte/blade/init.bt.sh:system/etc/init.bt.sh \
         system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
-
-# Prebuilt modules
-PRODUCT_COPY_FILES += \
-        device/zte/blade/prebuilt/cifs.ko:system/lib/modules/cifs.ko \
-        device/zte/blade/prebuilt/lzo_compress.ko:system/lib/modules/lzo_compress.ko \
-        device/zte/blade/prebuilt/lzo_decompress.ko:system/lib/modules/lzo_decompress.ko \
-        device/zte/blade/prebuilt/zram.ko:system/lib/modules/zram.ko
 
 # WiFi
 PRODUCT_COPY_FILES += \

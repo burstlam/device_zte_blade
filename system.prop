@@ -16,8 +16,7 @@ persist.sys.usb.config=adb,mass_storage
 dalvik.vm.dexopt-data-only=1
 dalvik.vm.execution-mode=int:jit
 
-persist.sys.use_dithering=0
-
+persist.sys.use_dithering=1
 
 com.qc.hardware=true
 
