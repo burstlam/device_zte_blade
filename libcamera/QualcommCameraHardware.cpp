@@ -3101,7 +3101,7 @@ extern "C" sp<CameraHardwareInterface> openCameraHardware()
 static CameraInfo sCameraInfo[] = {
 	{
 		CAMERA_FACING_BACK,
-		270,  /* orientation */
+		90,  /* orientation */
 	}
 };
 
