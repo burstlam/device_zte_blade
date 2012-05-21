@@ -25,30 +25,63 @@ $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
+# Graphics
 PRODUCT_PACKAGES := \
-        lights.blade \
-        sensors.blade \
-        librpc \
-        gps.blade \
-        BladeParts \
-        libmm-omxcore \
-        libOmxCore \
-        libOmxVdec \
-        libOmxVenc \
-        libstagefrighthw \
-        dexpreopt \
-        camera.msm7x27 \
         gralloc.msm7x27 \
         copybit.msm7x27 \
         hwcomposer.msm7x27
 
+# OMX
+PRODUCT_PACKAGES += \
+        libmm-omxcore \
+        libOmxCore \
+        libstagefrighthw
+
+# Camera
+PRODUCT_PACKAGES += \
+        camera.msm7x27
+
+# GPS
+PRODUCT_PACKAGES += \
+        librpc \
+        gps.blade
+
+# Blade specific
+PRODUCT_PACKAGES += \
+        lights.blade \
+        sensors.blade \
+        BladeParts
+
+# Audio
 PRODUCT_PACKAGES += \
         audio.primary.blade \
         audio_policy.blade \
         audio.a2dp.default \
         libaudioutils
 
+# Live Wallpapers
+PRODUCT_PACKAGES += \
+        LiveWallpapers \
+        LiveWallpapersPicker \
+        VisualizationWallpapers \
+        librs_jni
+
+# Other
+PRODUCT_PACKAGES += \
+        dexpreopt
+
+# for bugmailer
+ifneq ($(TARGET_BUILD_VARIANT),user)
+PRODUCT_PACKAGES += send_bug
+
+PRODUCT_COPY_FILES += \
+         system/extras/bugmailer/bugmailer.sh:system/bin/bugmailer.sh \
+         system/extras/bugmailer/send_bug:system/bin/send_bug
+endif
+
 DISABLE_DEXPREOPT := false
+
+PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_COPY_FILES := \
         device/zte/blade/init.blade.rc:root/init.blade.rc \
@@ -79,13 +112,6 @@ PRODUCT_COPY_FILES += \
         device/zte/blade/firmware/eeprom.bin:system/wifi/eeprom.bin \
         device/zte/blade/firmware/eeprom.data:system/wifi/eeprom.data
 
-# Live Wallpapers
-PRODUCT_PACKAGES += \
-        LiveWallpapers \
-        LiveWallpapersPicker \
-        VisualizationWallpapers \
-        librs_jni
-
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
          frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
@@ -96,22 +122,7 @@ PRODUCT_COPY_FILES += \
          frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
          frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml \
          frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-         frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-         packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
-
-PRODUCT_TAGS += dalvik.gc.type-precise
-
-PRODUCT_PACKAGES += \
-         librs_jni
-
-# for bugmailer
-ifneq ($(TARGET_BUILD_VARIANT),user)
-         PRODUCT_PACKAGES += send_bug
-         PRODUCT_COPY_FILES += \
-                 system/extras/bugmailer/bugmailer.sh:system/bin/bugmailer.sh \
-                 system/extras/bugmailer/send_bug:system/bin/send_bug
-endif
+         frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
 
 $(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
-#$(call inherit-product, frameworks/base/build/phone-hdpi-dalvik-heap.mk)
 $(call inherit-product-if-exists, vendor/zte/blade/blade-vendor.mk)

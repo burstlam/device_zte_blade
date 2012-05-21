@@ -21,30 +21,68 @@ USE_CAMERA_STUB := true
 # Use the non-open-source parts, if they're present
 -include vendor/zte/blade/BoardConfigVendor.mk
 
+# CPU
 TARGET_CPU_ABI := armeabi-v6l
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv6-vfp
 
+# Target and board properties
 TARGET_NO_BOOTLOADER := true
+TARGET_NO_RADIOIMAGE := true
+BOARD_PROVIDES_LIBRIL := true
+TARGET_BOARD_PLATFORM := msm7x27
+TARGET_BOOTLOADER_BOARD_NAME := blade
+TARGET_SPECIFIC_HEADER_PATH := device/zte/blade/include
 
-TARGET_PREBUILT_RECOVERY_KERNEL := device/zte/blade/recovery_kernel
+# Recovery
 BOARD_CUSTOM_GRAPHICS := ../../../device/zte/blade/recovery/graphics.c
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/zte/blade/recovery/recovery_ui.c
 TARGET_RECOVERY_INITRC := device/zte/blade/recovery/recovery.rc
 
+# Kernel
 TARGET_KERNEL_SOURCE := kernel/zte/zte-kernel-msm7x27
 TARGET_KERNEL_CONFIG := cyanogen_blade_defconfig
-
+TARGET_PREBUILT_RECOVERY_KERNEL := device/zte/blade/recovery_kernel
 BOARD_KERNEL_BASE := 0x02600000
 BOARD_KERNEL_CMDLINE := androidboot.hardware=blade console=null
 
-TARGET_NO_RADIOIMAGE := true
-TARGET_BOARD_PLATFORM := msm7x27
-TARGET_BOOTLOADER_BOARD_NAME := blade
+# WiFi
+BOARD_WPA_SUPPLICANT_DRIVER := AR6000
+WPA_SUPPLICANT_VERSION      := VER_0_6_X
+BOARD_WLAN_DEVICE           := wlan0
+WIFI_DRIVER_MODULE_PATH     := /system/wifi/ar6000.ko
+WIFI_DRIVER_MODULE_NAME     := ar6000
 
+# Bluetooth
+BOARD_HAVE_BLUETOOTH := true
+
+# GPS
+BOARD_GPS_LIBRARIES := libloc
+BOARD_USES_GPSSHIM := true
+BOARD_GPS_NEEDS_XTRA := true
+
+# USB mounting
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun0/file
+BOARD_UMS_LUNFILE := "/sys/devices/platform/msm_hsusb/gadget/lun0/file"
+
+# Browser
+WITH_JIT := true
+ENABLE_JSC_JIT := true
+JS_ENGINE := v8
+HTTP := chrome
+
+# QCOM
+BOARD_USES_QCOM_HARDWARE := true
+BOARD_USES_QCOM_LIBS := true
+COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
+
+# Graphics
+TARGET_USES_GENLOCK := true
 BOARD_EGL_CFG := device/zte/blade/egl.cfg
-
 USE_OPENGL_RENDERER := true
+BOARD_ADRENO_DECIDE_TEXTURE_TARGET := true
+COMMON_GLOBAL_CFLAGS += -DREFRESH_RATE=60
+TARGET_FORCE_CPU_UPLOAD := true
 
 # dev:    size   erasesize  name
 # mtd0: 00500000 00020000 "recovery"
@@ -61,39 +99,3 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00500000
 BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 0x0d200000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x13ba0000
 BOARD_FLASH_BLOCK_SIZE := 131072
-
-# Wifi related defines
-BOARD_WPA_SUPPLICANT_DRIVER := AR6000
-WPA_SUPPLICANT_VERSION      := VER_0_6_X
-BOARD_WLAN_DEVICE           := wlan0
-WIFI_DRIVER_MODULE_PATH     := /system/wifi/ar6000.ko
-WIFI_DRIVER_MODULE_NAME     := ar6000
-
-BOARD_HAVE_BLUETOOTH := true
-
-BOARD_PROVIDES_LIBRIL := true
-
-BOARD_GPS_LIBRARIES := libloc
-BOARD_USES_GPSSHIM := true
-BOARD_GPS_NEEDS_XTRA := true
-
-TARGET_SPECIFIC_HEADER_PATH := device/zte/blade/include
-
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun0/file
-
-BOARD_USES_QCOM_HARDWARE := true
-COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DREFRESH_RATE=60
-
-#DEBUG_DALVIK_VM := true
-BOARD_USES_QCOM_LIBS := true
-BOARD_USE_QCOM_PMEM := true
-
-TARGET_USES_GENLOCK := true
-TARGET_FORCE_CPU_UPLOAD := true
-
-#TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
-
-WITH_JIT := true
-ENABLE_JSC_JIT := true
-JS_ENGINE := v8
-HTTP := chrome
