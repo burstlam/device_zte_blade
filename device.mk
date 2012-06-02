@@ -93,7 +93,8 @@ PRODUCT_COPY_FILES := \
         device/zte/blade/AutoVolumeControl.txt:system/etc/AutoVolumeControl.txt \
         device/zte/blade/media_profiles.xml:system/etc/media_profiles.xml \
         device/zte/blade/prebuilt/start_usb0.sh:system/etc/start_usb0.sh \
-        device/zte/blade/gps.conf:system/etc/gps.conf
+        device/zte/blade/gps.conf:system/etc/gps.conf \
+        device/zte/blade/releasetools/extras.sh:system/bin/extras.sh
 
 # Bluetooth configuration files
 PRODUCT_COPY_FILES += \
