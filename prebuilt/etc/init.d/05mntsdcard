@@ -1,0 +1,22 @@
+#!/system/bin/sh
+
+BB="logwrapper busybox";
+
+if [ ! -d /sd-ext ]; then
+  mount -o remount,rw /
+  mkdir -p /sd-ext
+  mount -o remount,ro /
+fi
+PART=/dev/block/mmcblk0p2
+for i in 1 2 3 4 5; do
+  if [ -e $PART ]; then
+    $BB mount -o noatime,nodiratime,barrier=1 -t ext3 $PART /sd-ext
+    $BB chown 1000:1000 $SD_EXT_DIRECTORY;
+    $BB chmod 771 $SD_EXT_DIRECTORY;
+    break
+  else
+    echo "$PART does not exist (yet); sleeping a bit..."
+    sleep 2
+  fi
+done
+

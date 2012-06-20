@@ -1,0 +1,81 @@
+# Graphics
+ro.sf.lcd_density=240
+ro.sf.hwrotation=180
+qemu.sf.lcd_density=240
+debug.performance.tuning=1
+debug.sf.hw=1
+video.accelerate.hw=1
+persist.sys.use_16bpp_alpha=1
+persist.sys.use_dithering=1
+com.qc.hardware=true
+com.qc.hdmi_out=false
+debug.enabletr=false
+hwui.render_dirty_regions=false
+hwui.disable_vsync=true
+hwui.print_config=choice
+persist.sys.strictmode.visual=false
+ro.opengles.version=131072
+
+# WiFi
+wifi.interface=wlan0
+wifi.supplicant_scan_interval=60
+
+# RIL
+rild.libpath=/system/lib/libril-qc-1.so
+rild.libargs=-d /dev/smd0
+com.qc.hardware=true
+ro.telephony.default_network=0
+ro.telephony.call_ring.delay=3000
+ro.telephony.call_ring.multiple=false
+ro.telephony.ril.v3=icccardstatus,datacall,signalstrength,skipbrokendatacall,facilitylock,singlepdp,1
+mobiledata.interfaces=rmnet0,rmnet1,rmnet2
+
+# RIL Tweaks
+ro.ril.hsxpa=2 ro.ril.gprsclass=10
+ro.ril.hep=1 ro.ril.enable.dtm=1
+ro.ril.hsdpa.category=10
+ro.ril.enable.a53=1
+ro.ril.enable.3g.prefix=1
+ro.ril.htcmaskw1.bitmask=4294967295
+ro.ril.htcmaskw1=14449
+ro.ril.hsupa.category=5
+
+# USB
+persist.sys.usb.config=mass_storage,adb
+persist.service.adb.enable=1
+persist.sys.root_access=1
+# Don't set /proc/sys/vm/dirty_ratio to 0 when USB mounting
+ro.vold.umsdirtyratio=20
+
+# System
+dalvik.vm.lockprof.threshold=500
+dalvik.vm.execution-mode=int:jit
+dalvik.vm.dexopt-data-only=1
+ro.compcache.default=0
+dalvik.vm.checkjni=0
+ro.kernel.android.checkjni=0
+ro.kernel.checkjni=0
+
+#Power Saving
+#ro.ril.disable.power.collapse=1
+#pm.sleep_mode=1
+windowsmgr.max_events_per_sec=150
+
+#Camorder
+ro.product.camera=msm7x27
+debug.camcorder.disablemeta=1
+ro.media.dec.jpeg.memcap=20000000
+
+# Misc.
+
+ro.com.android.dateformat=dd-MM-yyyy
+ro.com.google.locationfeatures=0
+persist.sys.purgeable_assets=1
+ro.warmboot.capability=1
+
+media.stagefright.enable-player=true
+media.stagefright.enable-meta=false
+media.stagefright.enable-scan=false
+media.stagefright.enable-http=true
+media.stagefright.enable-aac=true
+media.stagefright.enable-qcp=true

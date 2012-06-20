@@ -1,0 +1,2 @@
+## Vold 2.0 Generic fstab
+dev_mount sdcard /mnt/sdcard auto /devices/platform/msm_sdcc.1/mmc_host/mmc0

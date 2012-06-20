@@ -1,0 +1,11 @@
+#!/system/bin/sh
+# Calibrate ZTE blade proximity sensor at first boot
+
+if [ ! -f /data/misc/prox_data.txt ]
+then
+	if [ ! -f /data/misc/prox/prox_threshold.txt ]
+	then
+		logwrapper /system/bin/prox_cal -c
+	fi
+fi
+
